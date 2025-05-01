@@ -3,19 +3,34 @@ import { Carousel } from "react-responsive-carousel";
 // import foodImage from "../../assets/hotelImages/food-image.png";
 // import hotelRoom from "../../assets/hotelImages/hotel-room.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import hotelImg from "../../assets/aspengrandhotellaportepictures/Front.jpg";
-import room1 from "../../assets/aspengrandhotellaportepictures/STANDARD-KING.jpg";
-import room2 from "../../assets/aspengrandhotellaportepictures/king-suite3.jpg";
-import room3 from "../../assets/aspengrandhotellaportepictures/king-suite.jpg";
-import room4 from "../../assets/aspengrandhotellaportepictures/2qb2.jpeg";
-import room5 from "../../assets/aspengrandhotellaportepictures/pool2.jpg";
-import dinning from "../../assets/aspengrandhotellaportepictures/Dinning.jpg";
+import banner1 from "../../assets/aspenepc-attachments/attachment1.avif"; // Front
+import banner2 from "../../assets/aspenepc-attachments/attachment2.avif"; // 2qtsup
+import banner3 from "../../assets/aspenepc-attachments/attachment3.avif"; // 2QB
+import banner4 from "../../assets/aspenepc-attachments/attachment4.avif"; // 2qb1
+import banner5 from "../../assets/aspenepc-attachments/attachment5.avif"; // 2qb2
+import banner6 from "../../assets/aspenepc-attachments/attachment6.avif"; // BF
 
+import banner7 from "../../assets/aspenepc-attachments/attachment7.avif"; // Dining 1
+import banner8 from "../../assets/aspenepc-attachments/attachment8.avif"; // Dining 2
+import banner9 from "../../assets/aspenepc-attachments/attachment9.avif"; // Dining 3
+import banner10 from "../../assets/aspenepc-attachments/attachment10.avif"; // Dining 4
+import banner11 from "../../assets/aspenepc-attachments/attachment11.avif"; // Dining 5
+import banner12 from "../../assets/aspenepc-attachments/attachment12.avif"; // Dining 6
 
-
-
-//  imagess Front,2qtsup,2QB,2qb1,2qb2,BF,Dinning,
-const images = [hotelImg, room1, room2, room3, room4, room5, dinning];
+const images = [
+  banner1,
+  banner2,
+  banner3,
+  banner4,
+  banner5,
+  banner6,
+  banner7,
+  banner8,
+  banner9,
+  banner10,
+  banner11,
+  banner12,
+];
 
 const HomeCarousel = () => {
   return (
