@@ -68,7 +68,7 @@ const Amenities = () => {
         </div>
         <div className="overflow-hidden rounded-lg">
           <img
-            src="/src/assets/pool2-9d62ca3a.jpg"
+            src="/assets/pool2-9d62ca3a.jpg"
             alt="Hotel Amenities"
             className="h-full w-full object-cover"
           />
