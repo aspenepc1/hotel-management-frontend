@@ -89,7 +89,7 @@ function AdminsNavbar() {
         {/* Dropdown for Hotels */}
         <div className="flex items-center">
           <h2 className="text-2xl font-bold text-[#001f53]">
-            ASPEN GRAND HOTELS
+            ASPEN GRAND HOTEL, Houston
           </h2>
 
           {/* Dropdown beside hotel name */}

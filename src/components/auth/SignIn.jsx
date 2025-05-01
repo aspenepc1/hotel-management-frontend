@@ -47,7 +47,7 @@ const SignIn = () => {
         <div className="max-w-md w-full mx-auto">
           {/* Logo */}
           <h2 className="text-left text-2xl font-bold text-navy-600">
-            ASPEN GRAND HOTELS
+            ASPEN GRAND HOTEL, Houston
           </h2>
           {/* Welcome Back */}
           <h1 className="text-xl font-bold mt-6 text-navy-600">Welcome Back</h1>

@@ -2,10 +2,11 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import { Icon } from "leaflet";
 
-import "leaflet/dist/leaflet.css";
+// Remove the duplicate CSS import since it's already in index.css
+// import "leaflet/dist/leaflet.css";
 
 const customIcon = new Icon({
-  iconUrl: "../../location.png", // Provide the path to your custom icon
+  iconUrl: "/location.png", // Changed to use absolute path from public directory
   iconSize: [32, 32],
   iconAnchor: [16, 32],
   popupAnchor: [0, -32],

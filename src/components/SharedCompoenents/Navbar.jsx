@@ -12,7 +12,7 @@ function Navbar() {
       <div className="container mx-auto flex justify-between items-center py-4 px-4">
         {/* Logo on the left */}
         <h2 className="text-2xl font-bold text-[#001f53]">
-          ASPEN GRAND HOTELS
+          ASPEN GRAND HOTEL, Houston
         </h2>
 
         {/* Mobile Menu Toggle Button */}

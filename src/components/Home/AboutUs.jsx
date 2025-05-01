@@ -9,7 +9,7 @@ function About() {
           <h1 className="font-bold text-xl text-[#002d72]">ABOUT US</h1>
           <p className="mt-4 text-gray-700">
             Welcome to{" "}
-            <strong className="text-[#637fac]">ASPEN GRAND HOTELS</strong>,
+            <strong className="text-[#637fac]">ASPEN GRAND HOTEL, Houston</strong>,
             where elegance meets comfort in a stunning blend of modern luxury
             and timeless charm. Nestled in the heart of a vibrant city, our
             hotel offers an oasis of tranquility with breathtaking views,
@@ -18,7 +18,7 @@ function About() {
             provide you with an unparalleled experience of relaxation and style.
             Indulge in world-class dining, unwind in our serene spa, or explore
             the local attractions just steps away. At{" "}
-            <strong className="text-[#637fac]">ASPEN GRAND HOTELS</strong>, we
+            <strong className="text-[#637fac]">ASPEN GRAND HOTEL, Houston</strong>, we
             create memories as unforgettable as the destination itself.
           </p>
         </div>

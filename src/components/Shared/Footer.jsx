@@ -12,11 +12,9 @@ const Footer = () => {
               <h6 className=" text-[#002d72] font-bold">Support</h6>
               <p>Customer Support</p>
               <p>Contact Us</p>
-              {/* <p>Travel Insurance</p>
-              <p>Help for Guests with Disabilities</p>
-              <p>Reservation Assistance</p>
-              <p>Covid-19 Response</p>
-              <p>Report an Issue</p> */}
+              <p>Address: 2205 Barker Oaks Dr, Houston, TX 77077</p>
+              <p>Phone: (281) 497-9888</p>
+              <p>Email: fdesk39@gmail.com</p>
             </div>
             <div className="flex flex-col gap-4 opacity-80">
               <h6 className=" text-[#002d72] font-bold">Community</h6>
@@ -43,7 +41,7 @@ const Footer = () => {
         {/* <hr className="bg-[#f7f7f7] mb-6" /> */}
         <section className="flex py-4  bg-[#001844] flex-row flex-wrap justify-between gap-10 px-10 mx-auto">
           <div className="flex flex-row flex-wrap items-center">
-            <p className="text-white">© 2023 ASPEN GRAND HOTELS, Inc.</p>
+            <p className="text-white">© 2023 ASPEN GRAND HOTEL, Houston, Inc.</p>
             <span className="p-3">·</span>
             <p className="text-white">Terms of Service</p>
             <span className="p-3">·</span>

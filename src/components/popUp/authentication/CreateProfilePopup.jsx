@@ -14,7 +14,7 @@ const CreateProfilePopup = ({
         <div className=" flex flex-col gap-3 justify-center items-center max-w-[35vw] pt-6 text-[#222222] mx-auto">
           <img src={motelLogo} alt="Motel Logo" className=" w-10" />
           <h4 className=" text-2xl font-semibold">
-            Welcome to ASPEN GRAND HOTELS
+            Welcome to ASPEN GRAND HOTEL, Houston
           </h4>
           <p className=" text-center text-sm">
             Discover places to stay and unique experiences around the world.

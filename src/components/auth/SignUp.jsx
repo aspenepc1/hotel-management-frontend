@@ -14,7 +14,7 @@ const SignUp = () => {
         <div className="max-w-md w-full mx-auto">
           {/* Logo */}
           <h2 className="text-left text-2xl font-bold text-navy-600">
-            ASPEN GRAND HOTELS
+          ASPEN GRAND HOTEL, Houston
           </h2>
 
           {/* Welcome Back */}
