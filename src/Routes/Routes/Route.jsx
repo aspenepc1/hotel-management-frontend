@@ -1,4 +1,5 @@
 import { Suspense, lazy } from "react";
+import { FadeLoader } from "react-spinners";
 // import { API } from "../../backend";
 import EditProfile from "../../Pages/UserProfile/EditProfile";
 import MainLayout from "../../layout/MainLayout";
@@ -10,28 +11,13 @@ import Listing from "../../Pages/Dashboard/Listing";
 import CreateNewListLayout from "../../layout/CreateNewListLayout";
 import ListHouseOverview from "../../Pages/ListHouseOverview";
 import SignIn from "../../components/auth/SignIn";
+import SignUp from "../../components/auth/SignUp";
 import ListHouseStepOne from "../../Pages/ListingHouseStepOne/ListHouseStepOne";
 import ListHouseStepOneStructure from "../../Pages/ListingHouseStepOne/ListHouseStepOneStructure";
 import ListHouseStepOnePlacetype from "../../Pages/ListingHouseStepOne/ListHouseStepOnePlacetype";
-import { FadeLoader } from "react-spinners";
-// import ListingHouseStepOneAddress from "../../Pages/ListingHouseStepOne/ListingHouseStepOneAddress";
-// import ListingHouseStepOneFloorPlan from "../../Pages/ListingHouseStepOne/ListingHouseStepOneFloorPlan";
-// import StepTwoOverview from "../../Pages/ListingHouseStepTwo/StepTwoOverview";
-// import Amenities from "../../Pages/ListingHouseStepTwo/Amenities";
-// import ListingHousePhotos from "../../Pages/ListingHouseStepTwo/ListingHousePhotos";
-// import HouseTitle from "../../Pages/ListingHouseStepTwo/HouseTitle";
-// import Highlight from "../../Pages/ListingHouseStepTwo/Highlight";
-// import Description from "../../Pages/ListingHouseStepTwo/Description";
-// import FinalStepOverview from "../../Pages/ListingHouseFinalStep/FinalStepOverview";
-// import Visibility from "../../Pages/ListingHouseFinalStep/Visibility";
-// import Pricing from "../../Pages/ListingHouseFinalStep/Pricing";
-// import Legal from "../../Pages/ListingHouseFinalStep/Legal";
-// import Receipt from "../../Pages/ListingHouseFinalStep/Receipt";
-// import Thankyou from "../../Pages/ListingHouseFinalStep/Thankyou";
-// import Home from "../../Pages/Home"; = lazy (() => import)
 import RoomsList from "../../Pages/Home";
-import SignUp from "../../components/auth/SignUp";
 import Gallery from "../../components/Home/Gallery";
+import Amenities from "../../Pages/Amenities";
 
 const ListingHouseStepOneAddress = lazy(() =>
   import("../../Pages/ListingHouseStepOne/ListingHouseStepOneAddress")
@@ -41,9 +27,6 @@ const ListingHouseStepOneFloorPlan = lazy(() =>
 );
 const StepTwoOverview = lazy(() =>
   import("../../Pages/ListingHouseStepTwo/StepTwoOverview")
-);
-const Amenities = lazy(() =>
-  import("../../Pages/ListingHouseStepTwo/Amenities")
 );
 const ListingHousePhotos = lazy(() =>
   import("../../Pages/ListingHouseStepTwo/ListingHousePhotos")
@@ -191,6 +174,10 @@ const router = [
             <PaymentConfirmed />
           </Suspense>
         ),
+      },
+      {
+        path: "/amenities",
+        element: <Amenities />,
       },
     ],
   },

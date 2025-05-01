@@ -12,9 +12,9 @@ const Footer = () => {
               <h6 className=" text-[#002d72] font-bold">Support</h6>
               <p>Customer Support</p>
               <p>Contact Us</p>
-              <p>Address: 2205 Barker Oaks Dr, Houston, TX 77077</p>
-              <p>Phone: (281) 497-9888</p>
-              <p>Email: fdesk39@gmail.com</p>
+              <p><strong>Address:</strong> 2205 Barker Oaks Dr, Houston, TX 77077</p>
+              <p><strong>Phone:</strong> (281) 497-9888</p>
+              <p><strong>Email:</strong> fdesk39@gmail.com</p>
             </div>
             <div className="flex flex-col gap-4 opacity-80">
               <h6 className=" text-[#002d72] font-bold">Community</h6>
