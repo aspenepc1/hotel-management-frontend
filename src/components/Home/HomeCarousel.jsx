@@ -34,7 +34,7 @@ const images = [
 
 const HomeCarousel = () => {
   return (
-    <div className="relative">
+    <div className="relative ">
       <Carousel
         showThumbs={false}
         infiniteLoop
@@ -49,7 +49,7 @@ const HomeCarousel = () => {
             <img
               src={image}
               alt={`carousel-item-${index}`}
-              className="w-full h-[45rem] object-cover"
+              className="w-full h-[40rem] object-cover"
             />
             {/* <div className="absolute inset-0 bg-black bg-opacity-0 flex flex-col justify-end items-center text-white pb-52">
               <h2 className="text-4xl text-gray-400 font-semibold">

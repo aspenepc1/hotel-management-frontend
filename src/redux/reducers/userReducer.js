@@ -1,8 +1,5 @@
 const initialState = {
     userDetails: null,
-    loginResponse: Number,
-    responseMessage: '',
-
 }
 
 const userReducer = (state = initialState, { type, payload }) => {
@@ -10,24 +7,18 @@ const userReducer = (state = initialState, { type, payload }) => {
         case "USER_SIGN_UP":
             return {
                 ...state,
-                userDetails: payload.user_details,
-                loginResponse: payload.success,
-                responseMessage: payload.info
+                userDetails: payload,
             };
         case "USER_LOG_IN":
             return {
                 ...state,
-                userDetails: payload.user_details,
-                loginResponse: payload.success,
-                responseMessage: payload.message
+                userDetails: payload
             };
         case "USER_LOG_OUT": {
             localStorage.removeItem("accessToken");
             localStorage.removeItem("refreshToken");
             return {
                 userDetails: null,
-                loginResponse: 0,
-                responseMessage: ""
             }
         }
         case "GET_USER_DETAILS":
@@ -37,8 +28,7 @@ const userReducer = (state = initialState, { type, payload }) => {
 
         case "CHANGE_USER_ROLE":
             return {
-                userDetails: payload.updatedUserDetails,
-
+                userDetails: payload,
             }
 
         default:

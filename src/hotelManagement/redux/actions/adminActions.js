@@ -1,12 +1,12 @@
 // import api from "../../backend";
 
 // /* eslint-disable no-undef */
-// export const userSignUp = (userData) => async (dispatch) => {
-//   dispatch({
-//     type: "USER_SIGN_UP",
-//     payload: userData,
-//   });
-// };
+export const adminSignUp = (userData) => async (dispatch) => {
+  dispatch({
+    type: "ADMIN_SIGN_UP",
+    payload: userData,
+  });
+};
 
 export const adminLogIn = (adminData) => async (dispatch) => {
   // console.log(adminData.user_details)

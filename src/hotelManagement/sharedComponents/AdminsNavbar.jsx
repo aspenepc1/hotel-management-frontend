@@ -31,10 +31,11 @@ function AdminsNavbar() {
   // const [activeHotel, setActiveHotel] = useState(allHotels[0]);
   const { pathname } = useLocation();
   const dispatch = useDispatch(); // Add dispatch
-  const admin = useSelector((state) => state.admin);
+  const adminDetails =
+    useSelector((state) => state.admin?.admin.adminDetails) || null;
   const activeHotel = useSelector((state) => state.admin.hotels.activeHotel);
   const allHotels = useSelector((state) => state.admin.hotels.allHotels);
-  console.log({ admin, allHotels, activeHotel });
+  console.log({ adminDetails, allHotels, activeHotel });
   const userDropdownRef = useRef(null);
   const hotelDropdownRef = useRef(null);
   const handleHotelSelect = (hotel) => {
@@ -42,9 +43,6 @@ function AdminsNavbar() {
     setHotelDropdownOpen(false); // Close the dropdown after selection
   };
   const navigate = useNavigate();
-  const handleUserDropdownToggle = () => {
-    setUserDropdownOpen(!userDropdownOpen);
-  };
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -76,7 +74,7 @@ function AdminsNavbar() {
   const handleUserOptionSelect = (option) => {
     if (option.name === "Logout") {
       localStorage.clear();
-      toast.success("You are Logged out !!");
+      toast.success("You are Logged out!");
       navigate("/admin/sign-in");
     }
     setUserDropdownOpen(false);
@@ -157,34 +155,45 @@ function AdminsNavbar() {
               </Link>
             </li>
             <li className="relative p-2 lg:p-0" ref={userDropdownRef}>
-              <div
-                className="flex items-center cursor-pointer"
-                onClick={handleUserDropdownToggle}
-              >
-                <FontAwesomeIcon icon={faUser} className="text-xl" />
-                <span className="ml-2 text-black">John Abraham</span>
-                <FontAwesomeIcon icon={faCaretDown} className="ml-1" />
-              </div>
-
-              {/* User Dropdown Menu */}
-              {userDropdownOpen && (
-                <ul className="absolute mt-2 bg-white shadow-lg border rounded-md py-2 right-0 w-48">
-                  {userOptions.map((option) => (
-                    <li
-                      key={option.id}
-                      className={`px-4 py-2 ${
-                        option.disabled
-                          ? "text-gray-400 cursor-not-allowed"
-                          : "hover:bg-gray-100 cursor-pointer"
-                      }`}
-                      onClick={() =>
-                        !option.disabled && handleUserOptionSelect(option)
-                      }
-                    >
-                      {option.name}
-                    </li>
-                  ))}
-                </ul>
+              {adminDetails ? (
+                <>
+                  {" "}
+                  <button
+                    onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                    className="flex items-center text-black hover:text-blue-600 focus:outline-none"
+                  >
+                    <FontAwesomeIcon icon={faUser} className="mr-2" />
+                    {adminDetails.name}
+                    <FontAwesomeIcon icon={faCaretDown} className="ml-1" />
+                  </button>
+                  {/* User Dropdown Menu */}
+                  {userDropdownOpen && (
+                    <ul className="absolute mt-2 bg-white shadow-lg border rounded-md py-2 right-0 w-48">
+                      {userOptions.map((option) => (
+                        <li
+                          key={option.id}
+                          className={`px-4 py-2 ${
+                            option.disabled
+                              ? "text-gray-400 cursor-not-allowed"
+                              : "hover:bg-gray-100 cursor-pointer"
+                          }`}
+                          onClick={() =>
+                            !option.disabled && handleUserOptionSelect(option)
+                          }
+                        >
+                          {option.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              ) : (
+                <button
+                  onClick={() => navigate("/admin/sign-in")}
+                  className="text-black hover:text-blue-600"
+                >
+                  Login
+                </button>
               )}
             </li>
           </ul>

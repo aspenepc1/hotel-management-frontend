@@ -17,6 +17,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@hookform/resolvers": "^5.0.1",
     "@stripe/react-stripe-js": "^2.3.0",
     "@stripe/stripe-js": "^2.1.6",
     "@tanstack/react-query": "^4.29.13",
@@ -31,7 +32,7 @@
     "react-datepicker": "^7.4.0",
     "react-dom": "^18.2.0",
     "react-elastic-carousel": "^0.11.5",
-    "react-hook-form": "^7.44.3",
+    "react-hook-form": "^7.56.1",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.10.1",
     "react-leaflet": "^4.2.1",
@@ -45,7 +46,8 @@
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
-    "twind": "^0.16.19"
+    "twind": "^0.16.19",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

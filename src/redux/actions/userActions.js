@@ -9,7 +9,6 @@ export const userSignUp = (userData) => async (dispatch) => {
 };
 
 export const userLogIn = (userData) => async (dispatch) => {
-  // console.log(userData.user_details)
   dispatch({
     type: "USER_LOG_IN",
     payload: userData,

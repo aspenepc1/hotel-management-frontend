@@ -16,7 +16,7 @@ import { parseISO } from "date-fns";
 
 /* eslint-disable react/prop-types */
 const ReservationCard = ({ listingData, filters }) => {
-  console.log({ listingData });
+  console.log({ listingData }, "selectedCard");
   // refs
   const calendarRef = useRef();
   const dropdownRef = useRef();
@@ -84,28 +84,28 @@ const ReservationCard = ({ listingData, filters }) => {
   //   "dates"
   // );
   // Function to handle date selection
-const handleSelect = (ranges) => {
-  console.log({ ranges });
-  if (ranges?.key === "selection") {
-    setSelectedDates([ranges.selection]);
-  } else {
-    const startDate = new Date(ranges.selection.startDate);
-    const endDate = new Date(ranges.selection.endDate);
-    // Reset time to compare only the date
-    startDate.setHours(0, 0, 0, 0);
-    endDate.setHours(0, 0, 0, 0);
-    // Check if the dates are the same
-    if (startDate.getTime() === endDate.getTime()) {
-      // Set end date to the next day
-      endDate.setDate(endDate.getDate() + 1);
-    }
-    console.log("Selected Start Date:", startDate);
-    console.log("Adjusted End Date:", endDate);
+  const handleSelect = (ranges) => {
+    console.log({ ranges });
+    if (ranges?.key === "selection") {
+      setSelectedDates([ranges.selection]);
+    } else {
+      const startDate = new Date(ranges.selection.startDate);
+      const endDate = new Date(ranges.selection.endDate);
+      // Reset time to compare only the date
+      startDate.setHours(0, 0, 0, 0);
+      endDate.setHours(0, 0, 0, 0);
+      // Check if the dates are the same
+      if (startDate.getTime() === endDate.getTime()) {
+        // Set end date to the next day
+        endDate.setDate(endDate.getDate() + 1);
+      }
+      console.log("Selected Start Date:", startDate);
+      console.log("Adjusted End Date:", endDate);
 
-    // Set selected dates in the state
-    setSelectedDates([{ startDate, endDate, key: "selection" }]);
-  }
-};
+      // Set selected dates in the state
+      setSelectedDates([{ startDate, endDate, key: "selection" }]);
+    }
+  };
 
   // booking function
   // const orderNumber = localStorage.getItem("orderId");
@@ -121,7 +121,9 @@ const handleSelect = (ranges) => {
       roomTypeId: listingData?._id,
       listingData: listingData,
     };
-    navigate(`/book/stays/${guestsNumber}`, { state: { data: checkkingData } });
+    navigate(`/book/stays/${listingData?._id}`, {
+      state: { data: checkkingData },
+    });
   };
 
   // getting saved reservations data

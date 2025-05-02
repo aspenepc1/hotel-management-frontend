@@ -19,6 +19,6 @@ export const getAllHotels = () => async (dispatch) => {
       payload: response.data, // Data from the API response
     });
   } catch (error) {
-    console.log("rror fetcbhing hotels",error);
+    console.log("rror fetcbhing hotels", error);
   }
 };

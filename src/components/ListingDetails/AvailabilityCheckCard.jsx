@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
-import {  AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { DateRange } from "react-date-range";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 // import { parseISO } from "date-fns";
 
 /* eslint-disable react/prop-types */
-const AvailablityCheckCard = () => {
+const AvailabilityCheckCard = () => {
   // refs
   const calendarRef = useRef();
   const dropdownRef = useRef();
@@ -54,7 +54,7 @@ const AvailablityCheckCard = () => {
       key: "selection",
     },
   ]);
-console.log({selectedDates})
+  console.log({ selectedDates });
   // calculating how many nights guest is staying
   // const [nightsStaying, setNightStaying] = useState(1);
 
@@ -75,29 +75,28 @@ console.log({selectedDates})
   //   "dates"
   // );
   // Function to handle date selection
-const handleSelect = (ranges) => {
-  console.log({ ranges });
-if(ranges?.key === "selection"){
-  setSelectedDates([ranges.selection]);
-}else {
-  const startDate = new Date(ranges.selection.startDate);
-  const endDate = new Date(ranges.selection.endDate);
-  // Reset time to compare only the date
-  startDate.setHours(0, 0, 0, 0);
-  endDate.setHours(0, 0, 0, 0);
-  // Check if the dates are the same
-  if (startDate.getTime() === endDate.getTime()) {
-    // Set end date to the next day
-    endDate.setDate(endDate.getDate() + 1);
-  }
-  console.log("Selected Start Date:", startDate);
-  console.log("Adjusted End Date:", endDate);
+  const handleSelect = (ranges) => {
+    console.log({ ranges });
+    if (ranges?.key === "selection") {
+      setSelectedDates([ranges.selection]);
+    } else {
+      const startDate = new Date(ranges.selection.startDate);
+      const endDate = new Date(ranges.selection.endDate);
+      // Reset time to compare only the date
+      startDate.setHours(0, 0, 0, 0);
+      endDate.setHours(0, 0, 0, 0);
+      // Check if the dates are the same
+      if (startDate.getTime() === endDate.getTime()) {
+        // Set end date to the next day
+        endDate.setDate(endDate.getDate() + 1);
+      }
+      console.log("Selected Start Date:", startDate);
+      console.log("Adjusted End Date:", endDate);
 
-  // Set selected dates in the state
-  setSelectedDates([{ startDate, endDate,key: 'selection' }]);
-}
-};
-
+      // Set selected dates in the state
+      setSelectedDates([{ startDate, endDate, key: "selection" }]);
+    }
+  };
 
   // booking function
   // const orderNumber = localStorage.getItem("orderId");
@@ -112,7 +111,7 @@ if(ranges?.key === "selection"){
       children: childrenNumber,
     };
     console.log({ checkkingData });
-    navigate("/rooms", { state: {data : checkkingData} });
+    navigate("/rooms", { state: { data: checkkingData } });
   };
 
   // getting saved reservations data
@@ -205,12 +204,12 @@ if(ranges?.key === "selection"){
 
   return (
     <>
-      <div className="grid place-items-center min-h-[100px]">
-        <div className="min-h-[100px] rounded-xl border border-[#dddddd] shadow-customShadow p-6 bg-white">
-          <div className="grid grid-cols-3 justify-between items-center gap-4">
+      <div className="grid place-items-center min-h-[100px] sm:pt-10 pb-6">
+        <div className="min-h-[100px] rounded-xl border border-[#dddddd] shadow-customShadow p-4 md:p-6 bg-white w-full max-w-md sm:max-w-2xl md:max-w-2xl lg:max-w-2xl">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {/* Calendar Section */}
             {/* {!calendarState && ( */}
-            <div className="rounded-tl-lg rounded-tr-lg border border-[#b9b9b9] w-full min-h-[60px] relative flex">
+            <div className="rounded-lg border border-[#b9b9b9] w-full min-h-[60px] flex">
               <div
                 onClick={() => {
                   setCalendarState(true);
@@ -218,13 +217,13 @@ if(ranges?.key === "selection"){
                 className="grid grid-cols-2 cursor-pointer w-full"
               >
                 <div className="px-3 py-3">
-                  <p className="text-[10px] text-black font-semibold uppercase">
+                  <p className="text-[10px] md:text-xs text-black font-semibold uppercase">
                     check-in
                   </p>
                   <p className="text-sm text-[#222222]">{localStartDate}</p>
                 </div>
                 <div className="px-3 py-3 border-l border-[#b9b9b9]">
-                  <p className="text-[10px] text-black font-semibold uppercase">
+                  <p className="text-[10px] md:text-xs text-black font-semibold uppercase">
                     checkout
                   </p>
                   <p className="text-sm text-[#222222]">{localEndDate}</p>
@@ -241,10 +240,10 @@ if(ranges?.key === "selection"){
                 setShowDropdown((prev) => !prev);
               }}
               ref={dropdownRef}
-              className="rounded-bl-lg rounded-br-lg border border-[#b9b9b9] w-full min-h-[50px] cursor-pointer flex items-center justify-between px-3 py-3"
+              className="rounded-lg border border-[#b9b9b9] w-full min-h-[50px] cursor-pointer flex items-center justify-between px-3 py-3"
             >
               <div className="flex flex-col">
-                <p className="text-[10px] text-black font-semibold uppercase">
+                <p className="text-[10px] md:text-xs text-black font-semibold uppercase">
                   guests
                 </p>
                 <p className="text-sm text-[#222222]">
@@ -261,10 +260,10 @@ if(ranges?.key === "selection"){
             </div>
 
             {/* {!showDropdown && !calendarState && ( */}
-            <div className="flex flex-col">
+            <div className="flex justify-center sm:justify-end">
               <button
                 onClick={checkAvailability}
-                className="p-3 bg-[#1b4281] hover:bg-[#002662] text-white text-sm font-medium rounded-md"
+                className="p-3 bg-[#1b4281] hover:bg-[#002662] text-white text-sm font-medium rounded-md w-full sm:w-auto"
               >
                 Find Rooms
               </button>
@@ -424,4 +423,4 @@ if(ranges?.key === "selection"){
   );
 };
 
-export default AvailablityCheckCard;
+export default AvailabilityCheckCard;

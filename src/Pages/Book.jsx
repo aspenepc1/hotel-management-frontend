@@ -21,7 +21,7 @@ const Book = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   console.log({ location });
-  const {data} = location?.state;
+  const { data } = location?.state;
   // const [searchParams] = useSearchParams();
 
   //   making the search params in an obj and store in a vairable
@@ -64,29 +64,29 @@ const Book = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
-    const calculateFinalPrice = async () => {
-      try {
-        const guestDetails = {
-          checkIn: data?.checkIn,
-          checkOut: data?.checkOut,
-          hotelType: data?.roomTypeId,
-          rooms: data?.rooms,
-        };
-        0;
-        const claculatePriceUrl = `${API}bookings/calculate-total-price`;
-        const response = await axios.post(claculatePriceUrl, guestDetails);
-        setCalculatedPriceDetails(response?.data || {});
-      } catch (error) {
-        toast.error(
-          error?.response?.data?.message || "Error calculating final price !"
-        );
-        console.error("Error GET FINAL PRICE RESPONSE", error);
-      }
-    };
+  const calculateFinalPrice = async () => {
+    try {
+      const guestDetails = {
+        checkIn: data?.checkIn,
+        checkOut: data?.checkOut,
+        hotelType: data?.roomTypeId,
+        rooms: data?.rooms,
+      };
+      0;
+      const claculatePriceUrl = `${API}bookings/calculate-total-price`;
+      const response = await axios.post(claculatePriceUrl, guestDetails);
+      setCalculatedPriceDetails(response?.data || {});
+    } catch (error) {
+      toast.error(
+        error?.response?.data?.message || "Error calculating final price !"
+      );
+      console.error("Error GET FINAL PRICE RESPONSE", error);
+    }
+  };
 
-    useEffect(() => {
-      calculateFinalPrice();
-    }, [data]);
+  useEffect(() => {
+    calculateFinalPrice();
+  }, [data]);
 
   if (isLoading) {
     return (

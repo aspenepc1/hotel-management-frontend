@@ -105,3 +105,7 @@ p {
 .dropdown:hover .dropdown-content-container {
   display: block;
 }
+
+.toHeightForMobile{
+  top: 83%;
+}

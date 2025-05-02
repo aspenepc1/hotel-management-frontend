@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useDateFormatting } from "../../hooks/useDateFormatting";
 // import {
-//   // PaymentElement,
+//   PaymentElement,
 //   useElements,
 //   useStripe,
 // } from "@stripe/react-stripe-js";
@@ -16,12 +16,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { API } from "../../backend";
 
-const Payment = ({ bookedData}) => {
-  console.log({bookedData})
+const Payment = ({ bookedData }) => {
+  console.log({ bookedData });
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
-  const [statesLoader, setstatesLoader] = useState(false);
+  const [statesLoader, setStatesLoader] = useState(false);
   const [selectedState, setSelectedState] = useState("");
   // Additional guest information fields
   const [addressInfo, setAddressInfo] = useState({
@@ -93,7 +93,7 @@ const Payment = ({ bookedData}) => {
   // Fetch states based on selected country
   const fetchStates = async (country) => {
     if (country) {
-      setstatesLoader(true);
+      setStatesLoader(true);
       try {
         const statesUrl =
           "https://countriesnow.space/api/v0.1/countries/states";
@@ -102,7 +102,7 @@ const Payment = ({ bookedData}) => {
       } catch (error) {
         console.error("Error fetching states:", error);
       } finally {
-        setstatesLoader(false);
+        setStatesLoader(false);
       }
     } else {
       setStates([]);
@@ -118,7 +118,7 @@ const Payment = ({ bookedData}) => {
     updateErrors(name);
   };
 
-    const validateForm = () => {
+  const validateForm = () => {
     const newErrors = {};
     if (!guestInfo.firstName) newErrors.firstName = "First Name is required.";
     if (!guestInfo.lastName) newErrors.lastName = "Last Name is required.";
@@ -133,74 +133,53 @@ const Payment = ({ bookedData}) => {
     return Object.keys(newErrors).length === 0; // Return true if no errors
   };
 
-  // Booking 
-    const bookRooms = async () => {
-      try {
-        const bookingUrl = `${API}bookings/`;
-        const bookingInformation = {
-          checkIn: bookedData?.checkIn,
-          checkOut: bookedData?.checkOut,
-          hotelType: bookedData?.roomTypeId, // The ObjectId of the RoomType
-          rooms: bookedData?.rooms,
-          adults: bookedData?.adults,
-          children: bookedData?.children,
-          guestInformation: {
-            firstName: guestInfo?.firstName,
-            lastName: guestInfo?.lastName,
-            email: guestInfo?.email,
-          },
-          address: {
-            addressLine1: addressInfo?.addressLine1,
-            addressLine2: addressInfo?.addressLine2,
-            country: selectedCountry,
-            state: selectedState,
-            city: addressInfo?.city,
-            zipCode: addressInfo?.zipcode,
-          },
-        };
-        const response = await axios.post(bookingUrl, bookingInformation);
-        console.log('BOOKING RESPONSE',{response});
-        toast.success("Booking is Successful Please check your email !!")
-        navigate('/')
-      } catch (error) {
-        console.error("Error BOOKING RESPONSE", error);
-      }
-    };
+  // Booking
+  const bookRooms = async (paymentType) => {
+    try {
+      const bookingUrl = `${API}bookings/`;
+      const bookingInformation = {
+        checkIn: bookedData?.checkIn,
+        checkOut: bookedData?.checkOut,
+        hotelType: bookedData?.roomTypeId, // The ObjectId of the RoomType
+        rooms: bookedData?.rooms,
+        adults: bookedData?.adults,
+        children: bookedData?.children,
+        paymentType,
+        guestInformation: {
+          firstName: guestInfo?.firstName,
+          lastName: guestInfo?.lastName,
+          email: guestInfo?.email,
+        },
+        address: {
+          addressLine1: addressInfo?.addressLine1,
+          addressLine2: addressInfo?.addressLine2,
+          country: selectedCountry,
+          state: selectedState,
+          city: addressInfo?.city,
+          zipCode: addressInfo?.zipcode,
+        },
+      };
+      const response = await axios.post(bookingUrl, bookingInformation);
+      console.log("BOOKING RESPONSE", { response });
+      toast.success("Booking is Successful Please check your email !!");
+      navigate("/");
+    } catch (error) {
+      console.error("Error BOOKING RESPONSE", error);
+    }
+  };
   // reservation form handler
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (paymentType) => {
     if (!validateForm()) return;
-    // if (!user) {
-    bookRooms();
-    // }
-// {
-//   "checkIn": "2024-10-19",
-//   "checkOut": "2024-10-20",
-//   "hotelType": "67000bfc980b7ecadcd9813d",  // The ObjectId of the RoomType
-//   "rooms": 1,
-//   "adults": 4,
-//   "children": 2,
-//   "guestInformation": {
-//     "firstName": "John",
-//     "lastName": "Doe",
-//     "email": "john.doe@example.com"
-//   },
-//   "address": {
-//     "addressLine1": "1234 Elm Street",
-//     "addressLine2": "Apt 101",
-//     "country": "USA",
-//     "state": "CA",
-//     "city": "Los Angeles",
-//     "zipCode": "90001"
-//   }
-// }
+    bookRooms(paymentType);
   };
   console.log({ states });
   return (
     <div>
       {/* trips section */}
       <div className=" flex flex-col gap-6">
-        <h5 className="text-xl text-[#222222] font-bold">Your Booking Details</h5>
+        <h5 className="text-xl text-[#222222] font-bold">
+          Your Booking Details
+        </h5>
         {/* dates */}
         <div className=" flex flex-row justify-between">
           <span className="text-lg text-[#222222]">
@@ -219,7 +198,7 @@ const Payment = ({ bookedData}) => {
           </h5>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* First Name */}
-            <div className="p-3 rounded-md">
+            <div className="p-1 rounded-md">
               <label
                 htmlFor="firstName"
                 className="block text-sm font-medium text-gray-700"
@@ -240,7 +219,7 @@ const Payment = ({ bookedData}) => {
               )}
             </div>
             {/* Last Name */}
-            <div className="p-3 rounded-md">
+            <div className="p-1 rounded-md">
               <label
                 htmlFor="lastName"
                 className="block text-sm font-medium text-gray-700"
@@ -262,7 +241,7 @@ const Payment = ({ bookedData}) => {
             </div>
 
             {/* Email Address */}
-            <div className="p-3 rounded-md">
+            <div className="p-1 rounded-md">
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
@@ -450,34 +429,55 @@ const Payment = ({ bookedData}) => {
           </div>
         </div>
       </div>
+      <div className="flex justify-between">
+        <button
+          className={`px-4 mt-5 bg-[#002d72] text-white p-2 rounded-md transition-opacity cursor-pointer rounded-md py-2 ${
+            Object.keys(errors).length > 0
+              ? "bg-gray-400 opacity-50 cursor-not-allowed"
+              : "cursor-pointer"
+          }`}
+          onClick={() => handleSubmit("offline")}
+        >
+          Book now &amp; pay at hotel
+        </button>
+        <button
+          onClick={() => handleSubmit("online")}
+          className={`px-4 mt-5 bg-[#002d72] text-white p-2 rounded-md transition-opacity cursor-pointer rounded-md py-2 ${
+            Object.keys(errors).length > 0
+              ? "bg-gray-400 opacity-50 cursor-not-allowed"
+              : "cursor-pointer"
+          }`}
+        >
+          Pay Now
+        </button>
+      </div>
       {/* payment element */}
-      <form onSubmit={handleSubmit}>
-        {/* <h5 className="text-xl md:text-[22px] text-[#222222] font-medium pb-4">
+      {/* <h5 className="text-xl md:text-[22px] text-[#222222] font-medium pb-4">
             Pay with
           </h5> */}
-        {/* <PaymentElement /> */}
-        <hr className="w-full h-[1.3px] bg-[#dddddd] my-10" />
-        <div>
-          <h5 className="text-xl md:text-[22px] text-[#222222] font-medium">
-            Ground rules
-          </h5>
-          <p className="text-sm md:text-base text-[#222222] py-4">
-            We ask every guest to remember a few simple things about what makes
-            a great guest.
-          </p>
-          <ul className="text-sm md:text-base list-disc pl-5">
-            <li>Follow the house rules </li>
-            <li>Treat your Host’s home like your own</li>
-          </ul>
-        </div>
-        <hr className="w-full h-[1.3px] bg-[#dddddd] my-10" />
-        <p className="text-xs opacity-70">
-          By selecting the button below, I agree to the Host&apos;s House Rules,
-          Ground rules for guests, Motel&apos;s Rebooking and Refund Policy, and
-          that Motel can charge my payment method if I’m responsible for damage.
+      {/* <PaymentElement /> */}
+      <hr className="w-full h-[1.3px] bg-[#dddddd] my-10" />
+      <div>
+        <h5 className="text-xl md:text-[22px] text-[#222222] font-medium">
+          Ground rules
+        </h5>
+        <p className="text-sm md:text-base text-[#222222] py-4">
+          We ask every guest to remember a few simple things about what makes a
+          great guest.
         </p>
+        <ul className="text-sm md:text-base list-disc pl-5">
+          <li>Follow the house rules </li>
+          <li>Treat your Host’s home like your own</li>
+        </ul>
+      </div>
+      <hr className="w-full h-[1.3px] bg-[#dddddd] my-10" />
+      <p className="text-xs opacity-70">
+        By selecting the button below, I agree to the Host&apos;s House Rules,
+        Ground rules for guests, Motel&apos;s Rebooking and Refund Policy, and
+        that Motel can charge my payment method if I’m responsible for damage.
+      </p>
 
-        {/* <button
+      {/* <button
           type="submit"
           className={`bg-blue-500 text-white p-2 rounded-md transition-opacity ${
             hasErrors ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
@@ -487,21 +487,13 @@ const Payment = ({ bookedData}) => {
           <FontAwesomeIcon icon={faPlus} className="mr-2" />
           Create Room
         </button> */}
-        <div className="flex justify-end">
-          <button
-            onClick={handleSubmit}
-            className={`px-4 mt-5 bg-blue-500 text-white p-2 rounded-md transition-opacity ${
-              Object.keys(errors).length > 0
-                ? "bg-gray-400 opacity-50 cursor-not-allowed"
-                : "cursor-pointer"
-            } rounded-md py-2`}
-            disabled={Object.keys(errors).length > 0}
-          >
-            <FontAwesomeIcon icon={faPlus} className="mr-2" />
-            Book
-          </button>
-        </div>
-      </form>
+      <div className="flex justify-end">
+        <button
+          className={`px-4 mt-5 bg-blue-500 text-white p-2 rounded-md transition-opacity  rounded-md py-2`}
+        >
+          I Agree
+        </button>
+      </div>
     </div>
   );
 };

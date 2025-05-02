@@ -5,15 +5,13 @@ const initialState = {
 }
 
 const adminReducer = (state = initialState, { type, payload }) => {
-  console.log({payload: payload})
+  console.log({ payload: payload })
   switch (type) {
-    // case "USER_SIGN_UP":
-    //   return {
-    //     ...state,
-    //     adminDetails: payload.user_details,
-    //     loginResponse: payload.success,
-    //     responseMessage: payload.info
-    //   };
+    case "USER_SIGN_UP":
+      return {
+        ...state,
+        adminDetails: payload,
+      };
     case "ADMIN_LOG_IN":
       return {
         ...state,

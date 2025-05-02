@@ -19,43 +19,43 @@ import RoomsList from "../../Pages/Home";
 import Gallery from "../../components/Home/Gallery";
 import Amenities from "../../Pages/Amenities";
 
-const ListingHouseStepOneAddress = lazy(() =>
-  import("../../Pages/ListingHouseStepOne/ListingHouseStepOneAddress")
+const ListingHouseStepOneAddress = lazy(
+  () => import("../../Pages/ListingHouseStepOne/ListingHouseStepOneAddress")
 );
-const ListingHouseStepOneFloorPlan = lazy(() =>
-  import("../../Pages/ListingHouseStepOne/ListingHouseStepOneFloorPlan")
+const ListingHouseStepOneFloorPlan = lazy(
+  () => import("../../Pages/ListingHouseStepOne/ListingHouseStepOneFloorPlan")
 );
-const StepTwoOverview = lazy(() =>
-  import("../../Pages/ListingHouseStepTwo/StepTwoOverview")
+const StepTwoOverview = lazy(
+  () => import("../../Pages/ListingHouseStepTwo/StepTwoOverview")
 );
-const ListingHousePhotos = lazy(() =>
-  import("../../Pages/ListingHouseStepTwo/ListingHousePhotos")
+const ListingHousePhotos = lazy(
+  () => import("../../Pages/ListingHouseStepTwo/ListingHousePhotos")
 );
-const HouseTitle = lazy(() =>
-  import("../../Pages/ListingHouseStepTwo/HouseTitle")
+const HouseTitle = lazy(
+  () => import("../../Pages/ListingHouseStepTwo/HouseTitle")
 );
 const Home = lazy(() => import("../../components/Home/HomeContainer"));
 const ListingDetails = lazy(() => import("../../Pages/ListingDetails"));
 // import Book from "../../Pages/Book";
 const Book = lazy(() => import("../../Pages/Book"));
 const PaymentConfirmed = lazy(() => import("../../Pages/PaymentConfirmed"));
-const Thankyou = lazy(() =>
-  import("../../Pages/ListingHouseFinalStep/Thankyou")
+const Thankyou = lazy(
+  () => import("../../Pages/ListingHouseFinalStep/Thankyou")
 );
 const Receipt = lazy(() => import("../../Pages/ListingHouseFinalStep/Receipt"));
 const Legal = lazy(() => import("../../Pages/ListingHouseFinalStep/Legal"));
 const Pricing = lazy(() => import("../../Pages/ListingHouseFinalStep/Pricing"));
-const Visibility = lazy(() =>
-  import("../../Pages/ListingHouseFinalStep/Visibility")
+const Visibility = lazy(
+  () => import("../../Pages/ListingHouseFinalStep/Visibility")
 );
-const FinalStepOverview = lazy(() =>
-  import("../../Pages/ListingHouseFinalStep/FinalStepOverview")
+const FinalStepOverview = lazy(
+  () => import("../../Pages/ListingHouseFinalStep/FinalStepOverview")
 );
-const Description = lazy(() =>
-  import("../../Pages/ListingHouseStepTwo/Description")
+const Description = lazy(
+  () => import("../../Pages/ListingHouseStepTwo/Description")
 );
-const Highlight = lazy(() =>
-  import("../../Pages/ListingHouseStepTwo/Highlight")
+const Highlight = lazy(
+  () => import("../../Pages/ListingHouseStepTwo/Highlight")
 );
 // import PaymentConfirmed from "../../Pages/PaymentConfirmed";
 
